@@ -1,0 +1,10 @@
+<a href="{{ path('add2') }}">Add Student</a>
+<h4>List Student</h4>
+{% for s in  tabStudent %}
+    ref: {{ s.ref }}
+    username: {{ s.username }}
+    moyenne: {{ s.moyenne }}
+    <a href="{{ path('update',{'ref':s.ref}) }}">Update</a>
+    <a href="{{ path('remove',{'ref':s.ref}) }}">Remove</a>
+    <br>
+{% endfor %}
