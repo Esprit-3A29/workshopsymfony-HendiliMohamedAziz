@@ -6,6 +6,7 @@ use App\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: StudentRepository::class)]
+
 class Student
 {
     #[ORM\Id]
@@ -17,6 +18,10 @@ class Student
 
     #[ORM\Column]
     private ?float $moyenne = null;
+
+    #[ORM\ManyToOne(inversedBy: 'students')]
+    #[ORM\JoinColumn(onDelete:"CASCADE")]
+    private ?Classroom $classroom = null;
 
 
     public function getRef(): ?int
@@ -51,6 +56,18 @@ class Student
     public function setMoyenne(float $moyenne): self
     {
         $this->moyenne = $moyenne;
+
+        return $this;
+    }
+
+    public function getClassroom(): ?Classroom
+    {
+        return $this->classroom;
+    }
+
+    public function setClassroom(?Classroom $classroom): self
+    {
+        $this->classroom = $classroom;
 
         return $this;
     }
