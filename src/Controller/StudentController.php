@@ -91,7 +91,8 @@ class StudentController extends AbstractController
         $form= $this->createForm(StudentType::class,$student);
         $form->handleRequest($request) ;
         if ($form->isSubmitted()){
-            $repository->add($student,true);   
+            $repository->add($student,true);
+            return  $this->redirectToRoute("list_student");   
         }
         return $this->renderForm("student/add2.html.twig",array("Studentform"=>$form));
     }
