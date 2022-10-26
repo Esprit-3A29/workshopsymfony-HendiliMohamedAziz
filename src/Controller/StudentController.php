@@ -32,9 +32,9 @@ class StudentController extends AbstractController
        $formSearch->handleRequest($request);
        $topStudents= $repository->topStudent();
        if($formSearch->isSubmitted()){
-           $nce= $formSearch->get('nce')->getData();
-           //var_dump($nce).die();
-           $result= $repository->searchStudent($nce);
+           $ref= $formSearch->get('ref')->getData();
+           //var_dump($ref).die();
+           $result= $repository->searchStudent($ref);
            return $this->renderForm("student/list.html.twig",
                array("tabStudent"=>$result,
                    "sortByMoyenne"=>$sortByMoyenne,
