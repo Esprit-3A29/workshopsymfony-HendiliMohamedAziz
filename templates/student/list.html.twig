@@ -4,7 +4,23 @@
     ref: {{ s.ref }}
     username: {{ s.username }}
     moyenne: {{ s.moyenne }}
-    <a href="{{ path('update2',{'ref':s.ref}) }}">Update</a>
+    <a href="{{ path('update22',{'ref':s.ref}) }}">Update</a>
     <a href="{{ path('remove',{'ref':s.ref}) }}">Remove</a>
+    <br>
+{% endfor %}
+
+<h1>students ordered by moyenne</h1>
+{% for i in sortByMoyenne%}
+    ref: {{ i.ref }}
+    username: {{ i.username }}
+    moyenne: {{ i.moyenne }}
+    <br>
+{% endfor %}   
+
+<h1 style="color: deeppink">Top Students</h1>
+{% for i in topStudents %}
+    ref: {{ i.ref }}
+    username: {{ i.username }}
+    moyenne: {{ i.moyenne }}
     <br>
 {% endfor %}
